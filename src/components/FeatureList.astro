@@ -1,0 +1,11 @@
+---
+const { items = [] } = Astro.props;
+---
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem">
+  {items.map((it) => (
+    <article class="card stack" style="--space:.5rem">
+      <h3 style="margin:0">{it.title}</h3>
+      <p class="small">{it.body}</p>
+    </article>
+  ))}
+</div>

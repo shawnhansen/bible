@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import PostCard from '../../components/PostCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('posts')).sort((a, b) =>
+  a.data.date < b.data.date ? 1 : -1
+);
+---
+<Base title="Posts">
+  <Header />
+  <main class="container pad stack">
+    <h1>Posts</h1>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem">
+      {posts.map(({ slug, data }) => (
+        <PostCard
+          href={`/posts/${slug}/`}
+          title={data.title}
+          excerpt={data.description}
+          date={data.date}
+        />
+      ))}
+    </div>
+  </main>
+  <Footer />
+</Base>

@@ -1,0 +1,29 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import StudyCard from '../../components/StudyCard.astro';
+import { getCollection } from 'astro:content';
+
+const studies = (await getCollection('studies')).sort((a, b) =>
+  a.data.date < b.data.date ? 1 : -1
+);
+---
+<Base title="Studies">
+  <Header />
+  <main class="container pad stack">
+    <h1>Studies</h1>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem">
+      {studies.map(({ slug, data }) => (
+        <StudyCard
+          href={`/studies/${slug}/`}
+          title={data.title}
+          tags={data.tags}
+          passage={data.passage}
+          date={data.date}
+        />
+      ))}
+    </div>
+  </main>
+  <Footer />
+</Base>

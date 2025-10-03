@@ -1,0 +1,32 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection, getEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('posts');
+  return entries.map((entry) => ({ params: { slug: entry.slug } }));
+}
+
+const { slug } = Astro.params;
+const entry = await getEntry('posts', slug);
+
+if (!entry) {
+  throw new Response('Not found', { status: 404 });
+}
+
+const { Content } = await entry.render();
+const data = entry.data;
+---
+<Base title={data.title} description={data.description}>
+  <Header />
+  <main class="container pad" style="max-width:70ch">
+    <h1 style="margin:.25rem 0 1rem">{data.title}</h1>
+    {data.description && <p class="lead">{data.description}</p>}
+    <article class="stack" style="--space:1rem">
+      <Content />
+    </article>
+  </main>
+  <Footer />
+</Base>

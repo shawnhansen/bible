@@ -1,0 +1,8 @@
+---
+const { href, title, tags = [], passage, date } = Astro.props;
+---
+<a href={href} class="card" style="display:block;text-decoration:none">
+  <p class="mono small" style="color:var(--accent);margin:0">{passage}</p>
+  <h3 style="margin:.25rem 0 0">{title}</h3>
+  <p class="small mono">{tags.join(', ')} · {date}</p>
+</a>

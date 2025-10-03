@@ -1,0 +1,91 @@
+.prose {
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: inherit;
+}
+
+.prose > *:first-child {
+  margin-top: 0;
+}
+
+.prose h2,
+.prose h3,
+.prose h4 {
+  margin-top: 2.5rem;
+  color: inherit;
+}
+
+.prose h2 {
+  font-size: clamp(1.8rem, 3vw, 2.35rem);
+}
+
+.prose h3 {
+  font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+}
+
+.prose p,
+.prose ul,
+.prose ol,
+.prose blockquote,
+.prose pre {
+  margin: 0 0 1.4rem;
+  max-width: var(--content-width);
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.35rem;
+}
+
+.prose li + li {
+  margin-top: 0.35rem;
+}
+
+.prose blockquote {
+  padding-left: 1rem;
+  border-left: 3px solid var(--accent);
+  font-style: italic;
+  color: var(--muted);
+}
+
+.prose code {
+  font-family: "SFMono-Regular", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
+  background: color-mix(in srgb, var(--fg) 6%, transparent);
+  padding: 0.15em 0.35em;
+  border-radius: 6px;
+  font-size: 0.94em;
+}
+
+.prose pre {
+  padding: 1rem;
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--fg) 6%, white);
+  overflow-x: auto;
+}
+
+.prose a {
+  color: var(--link);
+}
+
+.prose img {
+  border-radius: var(--radius);
+  margin: 2rem 0;
+}
+
+.prose table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 2rem 0;
+}
+
+.prose th,
+.prose td {
+  border: 1px solid color-mix(in srgb, var(--fg) 9%, transparent);
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.prose thead {
+  background: color-mix(in srgb, var(--fg) 6%, white);
+}

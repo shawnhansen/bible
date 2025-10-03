@@ -1,0 +1,22 @@
+---
+import Base from './Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import FeatureList from '../components/FeatureList.astro';
+
+const features = [
+  { title: 'Text-first', body: 'Plain language, primary text, humble claims.' },
+  { title: 'Data-friendly', body: 'Lexical notes, cross-refs, transparent sources.' },
+  { title: 'Reproducible', body: 'Diagrams, notes, and citations in version control.' },
+];
+---
+<Base title="Bible Study for Hackers" description="Read like a builder. Think like a scholar.">
+  <Header />
+  <Hero />
+  <Section title="Principles" lead="A minimal method for careful readers.">
+    <FeatureList items={features} />
+  </Section>
+  <Footer />
+</Base>
